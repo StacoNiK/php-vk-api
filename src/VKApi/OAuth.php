@@ -14,7 +14,7 @@ class OAuth
 				"response_type" => "token",
 				"display" => "page",
 				"v" => VkApi::getVersion(),
-				"redirect_url" => "https://oauth.vk.com/blank.htmlentities(string)l",
+				"redirect_url" => "https://oauth.vk.com/blank.html",
 				"scope" => "wall,friends,groups,photos,offline"
 			];
 		if (!is_array($params)) {

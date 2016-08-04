@@ -2,5 +2,5 @@
 
 abstract class BaseCaptchaHandler
 {
-	abstract public function getCaptchaKey();
+	abstract public function getCaptchaKey($vkCaptcha);
 }

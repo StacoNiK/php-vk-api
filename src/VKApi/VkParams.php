@@ -8,7 +8,7 @@ class VkParams
 {
 	protected $params = [];
 
-	public function __construct($data)
+	public function __construct($data = [])
 	{
 		$this->params = $data;
 	}
