@@ -1,0 +1,29 @@
+var ITERS = Args.iters;
+var comments = [];
+var req_params = {
+        "owner_id" : Args.owner_id,
+        "post_id" : Args.post_id,
+        "need_likes" : Args.need_likes,
+        "start_comment_id" : Args.start_comment_id,
+        "offset" : Args.offset,
+        "count"  : Args.count,
+        "v" : "5.34",
+        "preview_length" : Args.preview_length,
+        "sort" : Args.sort
+};
+if (req_params.count < 1) {
+	req_params.count = 100;
+} 
+
+var i = 0;
+while(i < ITERS){
+	var res = API.wall.getComments(req_params);
+	var items = res.items;
+	if (items.length == 0) {
+		return comments;
+	}
+	comments.push(items);
+	req_params.offset = (i+1)*req_params.count;
+	i = i + 1;
+}
+return comments;

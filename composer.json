@@ -1,0 +1,16 @@
+{
+    "name": "staconik/php-vk-api",
+    "description": "PHP library for VK.com API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stas Pazhoha",
+            "email": "staconik@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"VKApi\\": "src/VKApi/"}
+    },
+    "require": {}
+}

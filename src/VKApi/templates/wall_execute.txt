@@ -1,0 +1,26 @@
+var ITERS = Args.iters;
+var posts = [];
+var req_params = {
+        "owner_id" : Args.owner_id,
+        "domain" : Args.domain,
+        "filter" : Args.filter,
+        "offset" : Args.offset,
+        "count"  : Args.count,
+        "v" : "5.34"
+};
+if (req_params.count < 1) {
+	req_params.count = 100;
+} 
+
+var i = 0;
+while(i < ITERS){
+	var res = API.wall.get(req_params);
+	var items = res.items;
+	if (items.length == 0) {
+		return posts;
+	}
+	posts.push(items);
+	req_params.offset = (i+1)*req_params.count;
+	i = i + 1;
+}
+return posts;
