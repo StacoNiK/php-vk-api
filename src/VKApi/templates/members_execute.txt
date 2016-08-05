@@ -2,8 +2,8 @@ var ITERS = Args.iters;
 var members = [];
 var req_params = {
         "group_id" : Args.group_id,
-        "offset" : Args.offset,
-        "count"  : Args.count,
+        "offset" : parseInt(Args.offset),
+        "count"  : parseInt(Args.count),
         "v" : "5.34",
         "fields" : Args.fields,
         "filter" : Args.filter,
@@ -21,7 +21,7 @@ while(i < ITERS){
 		return members;
 	}
 	members.push(items);
-	req_params.offset = (i+1)*req_params.count;
+	req_params.offset = req_params.offset + req_params.count;
 	i = i + 1;
 }
 return members;

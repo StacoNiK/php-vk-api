@@ -5,8 +5,8 @@ var req_params = {
         "post_id" : Args.post_id,
         "need_likes" : Args.need_likes,
         "start_comment_id" : Args.start_comment_id,
-        "offset" : Args.offset,
-        "count"  : Args.count,
+        "offset" : parseInt(Args.offset),
+        "count"  : parseInt(Args.count),
         "v" : "5.34",
         "preview_length" : Args.preview_length,
         "sort" : Args.sort
@@ -23,7 +23,7 @@ while(i < ITERS){
 		return comments;
 	}
 	comments.push(items);
-	req_params.offset = (i+1)*req_params.count;
+	req_params.offset = req_params.offset + req_params.count;
 	i = i + 1;
 }
 return comments;
