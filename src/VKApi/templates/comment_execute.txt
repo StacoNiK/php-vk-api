@@ -7,7 +7,7 @@ var req_params = {
         "start_comment_id" : Args.start_comment_id,
         "offset" : parseInt(Args.offset),
         "count"  : parseInt(Args.count),
-        "v" : "5.34",
+        "v" : "5.53",
         "preview_length" : Args.preview_length,
         "sort" : Args.sort
 };

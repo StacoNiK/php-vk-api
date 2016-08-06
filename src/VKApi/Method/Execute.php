@@ -78,6 +78,29 @@ class Execute
 		return $result;
 	}
 
+	public function getLikesList(\VKApi\VkParams $params, $iters = 25)
+	{
+		$template = $this->loadTemplate("likes_list_execute");
+		if (!$template) {
+			return false;
+		}
+		$params->set("code", $template);
+		$params->set("iters", $iters);
+		$request = $this->vk->createRequest("execute", $params);
+		$response = $request->execute();
+		if (!$response->is_success) {
+			return false;
+		}
+		$items = $response->response->get();
+		$result = [];
+		foreach ($items as $item) {
+			if (is_array($item)) {
+				$result = array_merge($result, $item);
+			}
+		}
+		return $result;
+	}
+
 	protected function loadTemplate($name)
 	{
 		$path = __DIR__."/../templates/".$name.".txt";

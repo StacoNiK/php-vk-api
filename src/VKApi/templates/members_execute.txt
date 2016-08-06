@@ -4,7 +4,7 @@ var req_params = {
         "group_id" : Args.group_id,
         "offset" : parseInt(Args.offset),
         "count"  : parseInt(Args.count),
-        "v" : "5.34",
+        "v" : "5.53",
         "fields" : Args.fields,
         "filter" : Args.filter,
         "sort" : Args.sort
