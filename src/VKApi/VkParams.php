@@ -50,4 +50,14 @@ class VkParams
 	{
 		return array_key_exists($key, $this->params);
 	}
+
+	public function addOffset($offset = 100)
+	{
+		$old_offset = 0;
+		$offset = (int) $offset;
+		if ($this->existsParam("offset")) {
+			$old_offset = (int) $this->get("offset");
+		}
+		return $this->set("offset", $old_offset + $offset);
+	}
 }
