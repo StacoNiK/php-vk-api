@@ -1,0 +1,30 @@
+var ITERS = Args.iters;
+var members = [];
+var req_params = {
+		"type" : Args.type,
+        "owner_id" : Args.owner_id,
+        "item_id" : Args.item_id,
+        "page_url" : Args.page_url,
+        "offset" : parseInt(Args.offset),
+        "count"  : parseInt(Args.count),
+        "v" : "5.53",
+        "friends_only" : Args.friends_only,
+        "filter" : Args.filter,
+        "skip_own" : Args.skip_own
+};
+if (req_params.count < 1) {
+	req_params.count = 1000;
+} 
+
+var i = 0;
+while(i < ITERS){
+	var res = API.likes.getList(req_params);
+	var items = res.items;
+	if (items.length == 0) {
+		return members;
+	}
+	members.push(items);
+	req_params.offset = req_params.offset + req_params.count;
+	i = i + 1;
+}
+return members;
