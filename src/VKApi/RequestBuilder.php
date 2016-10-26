@@ -14,7 +14,7 @@ class RequestBuilder
 
 	public function build()
 	{
-		$string = $this->api_url.$this->method."?".http_build_query($this->params->getParams());
+		$string = $this->api_url.$this->method;//."?".http_build_query($this->params->getParams());
 		return $string;
 	}
 }

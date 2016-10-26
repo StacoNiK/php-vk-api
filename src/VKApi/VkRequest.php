@@ -45,7 +45,7 @@ class VkRequest
 		}
 		$builder = new RequestBuilder($this->method, $this->params);
 		$requestStr = $builder->build();
-		$response = $this->http_client->get($requestStr);
+		$response = $this->http_client->post($requestStr, $this->params->getParams());
 		$jsonArray = json_decode($response, true);
 		if (json_last_error() != JSON_ERROR_NONE) {
 			$vkResult = $this->execute($depth+1);
