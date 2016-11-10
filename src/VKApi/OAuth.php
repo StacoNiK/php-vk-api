@@ -1,6 +1,6 @@
 <?php namespace VKApi;
 
-use Util\HttpClient;
+use \VKApi\Util\HttpClient;
 
 class OAuth
 {
@@ -14,7 +14,7 @@ class OAuth
 				"response_type" => "token",
 				"display" => "page",
 				"v" => VkApi::getVersion(),
-				"redirect_url" => "https://oauth.vk.com/blank.html",
+				"redirect_uri" => "https://oauth.vk.com/blank.html",
 				"scope" => "wall,friends,groups,photos,offline"
 			];
 		if (!is_array($params)) {
@@ -51,16 +51,19 @@ class OAuth
 
 	public function getTokenByCode($code)
 	{
-		$params = $this->params;
+		$params = [];
+		$params['client_id'] = $this->params['client_id'];
+		$params['client_secret'] = $this->params['client_secret'];
+		$params['redirect_uri'] = $this->params['redirect_uri'];
 		$params['code'] = $code;
 		$url = $this->auth_url_token.http_build_query($params);
 		$http = new HttpClient();
 		$response = $http->get($url);
 		$data = [];
 		if ($response) {
-			$data = json_decode($response);
+			$data = json_decode($response, true);
 		}
-		if (array_key_exists("response", $data)) {
+		if (array_key_exists("access_token", $data)) {
 			return new VkAccessToken($data);
 		} else {
 			throw new Exception\AuthException($data['error']." - ".$data['error_description'], 1);
