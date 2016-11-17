@@ -5,6 +5,7 @@ class VkApi
 	public static $version = "5.53";
 	protected static $captcha_handler; 
 	protected static $is_captcha_handler = false;
+	protected static $last_error;
 
 	protected $access_token = false;
 
@@ -30,6 +31,16 @@ class VkApi
 			return $this->captcha_handler;
 		}
 		return false;
+	}
+
+	public static function getLastError()
+	{
+		return self::$last_error;
+	}
+
+	public static function setLastError($error)
+	{
+		self::$last_error = $error;
 	}
 
 	public function __construct($token = null)

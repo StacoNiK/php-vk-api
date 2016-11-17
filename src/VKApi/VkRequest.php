@@ -69,6 +69,7 @@ class VkRequest
 					}
 				}
 				$vkError = new VkError($jsonArray['error']);
+				VkApi::setLastError($vkError);
 				$vkResult->is_error = true;
 				$vkResult->error = $vkError;
 				if ($this->vk_error_listener) {
