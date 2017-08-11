@@ -10,9 +10,6 @@ class HttpClient
         $this->ch = curl_init();
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
-        /*if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
-            curl_setopt($this->ch, CURLOPT_SAFE_UPLOAD, false);
-        }*/
         curl_setopt($this->ch, CURLOPT_POST, false);
     }
 
