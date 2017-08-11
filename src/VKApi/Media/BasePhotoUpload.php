@@ -53,7 +53,7 @@ abstract class BasePhotoUpload
 
 	protected function uploadPhoto()
 	{
-		$photo = file_get_contents($this->photo_url);
+		$photo = $this->http->get($this->photo_url);
 		$rand_name = mt_rand(1, 560234).mt_rand(560234, 760234).mt_rand(760234, 999999).".jpg";
 		file_put_contents($rand_name, $photo);
         if (version_compare(PHP_VERSION, '5.5.0', '<=')) {
