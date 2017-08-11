@@ -8,13 +8,13 @@
 
 **Пример использования:**
 
-    $token = new VKApi\VkAccessToken("ACCESS_TOKEN"); 
+    $token = new \VKApi\VkAccessToken("ACCESS_TOKEN"); 
     if (!$token->check()) {
         echo 'Invalid token';
         exit;
     }
-    $vk = new VKApi\VkApi($token); //основной класс для работы с апи
-    $param = new VKApi\VkParams(["owner_id" => "1"]); //создаем объект параметров запроса
+    $vk = new \VKApi\VkApi($token); //основной класс для работы с апи
+    $param = new \VKApi\VkParams(["owner_id" => "1"]); //создаем объект параметров запроса
     $request = $vk->createRequest("wall.get", $param);
     $request->attempts = 5; //количество попыток повторения в случае ошибки
     $request->setSuccessListener(function ($response) {
@@ -35,7 +35,7 @@
     } 
 **Создание авторизации**
 
-    $auth = new OAuth(['client_id' => "CLIENT_ID", 'scope' => 'offline']); //создаем объект для авторизации и передаем массив параметров
+    $auth = new \VKApi\OAuth(['client_id' => "CLIENT_ID", 'scope' => 'offline']); //создаем объект для авторизации и передаем массив параметров
     
     $auth->getImplictFlowLink(); //получение ссылки для авторизации (которая вернет токен)
 
@@ -47,7 +47,7 @@
     
 **Загрузка фото:**
 
-    $upload = new VKApi\Media\MessagePhotoUpload($vk, "PHOTO_URL", new VKApi\VkParams()); //параметры в соответствии с документацией
+    $upload = new \VKApi\Media\MessagePhotoUpload($vk, "PHOTO_URL", new \VKApi\VkParams()); //параметры в соответствии с документацией
     $result = $upload->save(new VkParams()); //возвращается объект photo
 
 **Обработка капчи**
