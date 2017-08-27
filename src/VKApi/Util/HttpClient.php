@@ -11,6 +11,8 @@ class HttpClient
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($this->ch, CURLOPT_POST, false);
+        curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
     }
 
     /**
