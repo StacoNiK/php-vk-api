@@ -13,4 +13,10 @@ class VkResponse
 	{
 		return $this->responseArray;
 	}
+	
+	public function __get($name)
+	{
+		return $this->responseArray[$name];
+	}
+}
 }
