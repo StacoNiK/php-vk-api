@@ -19,4 +19,3 @@ class VkResponse
 		return $this->responseArray[$name];
 	}
 }
-}
